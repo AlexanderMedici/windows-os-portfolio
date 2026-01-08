@@ -2,7 +2,7 @@
 
 A Windows-inspired portfolio UI built with React and Vite. It recreates a desktop experience with draggable windows, a taskbar, a start menu, and a set of mini apps for showcasing work and personal info.
 
-![Preview](image.png)
+
 
 ## Features
 - Boot screen with session persistence

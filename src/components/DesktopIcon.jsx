@@ -45,14 +45,14 @@ const DesktopIcon = ({ icon, onDoubleClick, style }) => {
       onClick={handleClick}
       onDoubleClick={handleDoubleClick}
     >
-      <div className="w-10 h-10 mb-1.5 filter drop-shadow-md flex items-center justify-center transform transition-transform group-active:scale-95">
+      <div className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 mb-1.5 filter drop-shadow-md flex items-center justify-center transform transition-transform group-active:scale-95">
         {typeof icon.icon === 'string' ? (
           <img src={icon.icon} alt={icon.name} className="w-full h-full object-contain" loading='lazy' />
         ) : (
           <div className="text-3xl">{icon.icon}</div>
         )}
       </div>
-      <span className="text-white text-xs text-center font-medium drop-shadow-md line-clamp-2 px-1 break-words leading-tight" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+      <span className="text-white text-[11px] sm:text-xs text-center font-medium drop-shadow-md line-clamp-2 px-1 break-words leading-tight" style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
         {icon.name}
       </span>
     </div>

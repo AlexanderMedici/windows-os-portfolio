@@ -8,8 +8,12 @@ import suitcaseIcon from "../assets/images/suitcase.png";
 import recycleBinIcon from "../assets/images/recycle-bin.png";
 import settingIcon from "../assets/images/setting.png";
 import terminalIcon from "../assets/images/terminal.png";
+import outlookIcon from "../assets/images/outlook.png";
+import playerIcon from "../assets/images/player.png";
 import me from "../assets/images/alex.jpg";
 import resumePdf from "../assets/images/Resume.pdf";
+import OutlookMail from "./OutlookMail";
+import MusicPlayer from "./MusicPlayer";
 // React Icons imports
 import {
   FaRocket,
@@ -603,20 +607,22 @@ const Desktop = ({
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
-                      <span className="text-sm text-gray-300"></span>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between mb-2">
                       <span className="text-sm text-gray-300">
-                        Gremlin Certified Chaos Engineering{" "}
+                        Agile Scrum Foundation
                       </span>
                     </div>
                   </div>
                   <div>
                     <div className="flex justify-between mb-2">
                       <span className="text-sm text-gray-300">
-                        Node.js & APIs
+                        Gremlin Certified Chaos Engineering
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between mb-2">
+                      <span className="text-sm text-gray-300">
+                        Responsive Web Design
                       </span>
                     </div>
                   </div>
@@ -1368,6 +1374,29 @@ const Desktop = ({
         content: <Terminal />,
       },
     },
+    {
+      id: "outlook",
+      name: "Outlook",
+      icon: outlookIcon,
+      content: {
+        title: "Outlook",
+        type: "app",
+        icon: outlookIcon,
+        content: <OutlookMail />,
+      },
+    },
+    {
+      id: "player",
+      name: "Player",
+      icon: playerIcon,
+      content: {
+        title: "Player",
+        type: "app",
+        icon: playerIcon,
+        keepAlive: true,
+        content: <MusicPlayer />,
+      },
+    },
   ];
 
   return (
@@ -1378,7 +1407,10 @@ const Desktop = ({
         style={{ height: "calc(100vh - 50px)" }}
       >
         {desktopIcons.map((icon, index) => (
-          <div key={icon.id} className="w-[90px] h-[100px]">
+          <div
+            key={icon.id}
+            className="w-[78px] h-[92px] sm:w-[90px] sm:h-[100px] lg:w-[100px] lg:h-[110px]"
+          >
             <DesktopIcon
               icon={icon}
               onDoubleClick={() => onOpenWindow(icon.content)}

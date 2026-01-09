@@ -131,7 +131,7 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
 
 
 
-  if (windowData.isMinimized) return null
+  if (windowData.isMinimized && !windowData.keepAlive) return null
 
   // Responsive window styling
   const getWindowClasses = () => {
@@ -187,6 +187,7 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
       className={getWindowClasses()}
       style={{
         ...getWindowStyle(),
+        display: windowData.isMinimized ? 'none' : undefined,
         // Hardware acceleration for smooth dragging
         transform: 'translateZ(0)',
         willChange: isDragging ? 'transform' : 'auto'

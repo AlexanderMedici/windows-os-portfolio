@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { GoSearch } from "react-icons/go";
 import { FaBatteryHalf } from "react-icons/fa";
 import {
@@ -8,13 +8,16 @@ import {
     FaChevronUp
 } from 'react-icons/fa'
 import StartMenu from './StartMenu'
+import OracleChat from './OracleChat'
+import chatIcon from '../assets/images/Chat.png'
 
-const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
+const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow, volume, onVolumeChange }) => {
     const [currentTime, setCurrentTime] = useState(new Date())
     const [showBatteryTooltip, setShowBatteryTooltip] = useState(false)
     const [showWifiTooltip, setShowWifiTooltip] = useState(false)
     const [showVolumeTooltip, setShowVolumeTooltip] = useState(false)
     const [isStartMenuOpen, setIsStartMenuOpen] = useState(false)
+    const volumeRef = useRef(null)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -23,6 +26,18 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
 
         return () => clearInterval(timer)
     }, [])
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (!showVolumeTooltip) return
+            if (volumeRef.current && !volumeRef.current.contains(event.target)) {
+                setShowVolumeTooltip(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside)
+        return () => document.removeEventListener('mousedown', handleClickOutside)
+    }, [showVolumeTooltip])
 
     const formatTime = (date) => {
         return date.toLocaleTimeString([], {
@@ -51,6 +66,7 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
         return date.toLocaleDateString('en-GB', options)
     }
 
+    const volumePercent = Math.round(((volume ?? 0.75) * 100))
 
 
     return (
@@ -75,6 +91,25 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
                     {/* Search Icon */}
                     <button className="w-8 sm:w-10 cursor-pointer h-8 bg-transparent hover:bg-gray-700 hover:bg-opacity-50 flex items-center justify-center transition-colors flex-shrink-0">
                         <GoSearch className="w-4 sm:w-6 h-4 sm:h-6 rotate-90 text-white" />
+                    </button>
+
+                    {/* Oracle pinned app */}
+                    <button
+                        onClick={() => onOpenWindow({
+                            title: "Oracle",
+                            type: "app",
+                            icon: chatIcon,
+                            content: <OracleChat />
+                        })}
+                        className="w-8 sm:w-10 cursor-pointer h-8 bg-transparent hover:bg-gray-700 hover:bg-opacity-50 flex items-center justify-center transition-colors flex-shrink-0"
+                        title="Oracle"
+                    >
+                        <img
+                            src={chatIcon}
+                            alt="Oracle"
+                            className="w-4 sm:w-6 h-4 sm:h-6 object-contain"
+                            loading="lazy"
+                        />
                     </button>
 
                     {/* Open Windows */}
@@ -150,11 +185,10 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
                         </div>
 
                         {/* Volume Icon */}
-                        <div className="relative">
+                        <div className="relative" ref={volumeRef}>
                             <button
                                 className="w-5 sm:w-7 h-5 sm:h-7 bg-transparent hover:bg-gray-700 hover:bg-opacity-50 flex items-center justify-center transition-colors"
-                                onMouseEnter={() => setShowVolumeTooltip(true)}
-                                onMouseLeave={() => setShowVolumeTooltip(false)}
+                                onClick={() => setShowVolumeTooltip((prev) => !prev)}
                             >
                                 <FaVolumeUp className="w-3 sm:w-4 h-3 sm:h-4 text-white" />
                             </button>
@@ -163,10 +197,23 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
                             {showVolumeTooltip && (
                                 <div className="absolute bottom-12 right-0 bg-gray-800 bg-opacity-95 backdrop-blur-sm text-white p-3 rounded-lg shadow-lg border border-gray-700 min-w-[180px] hidden sm:block">
                                     <div className="text-xs mb-2">
-                                        Speakers: 75%
+                                        Speakers: {volumePercent}%
                                     </div>
-                                    <div className="w-full bg-gray-600 rounded-full h-2">
-                                        <div className="bg-white h-2 rounded-full" style={{ width: '75%' }}></div>
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="100"
+                                        value={volumePercent}
+                                        onChange={(event) => {
+                                            const nextValue = Number(event.target.value)
+                                            if (Number.isFinite(nextValue)) {
+                                                onVolumeChange?.(nextValue / 100)
+                                            }
+                                        }}
+                                        className="w-full accent-white"
+                                    />
+                                    <div className="w-full bg-gray-600 rounded-full h-2 mt-2">
+                                        <div className="bg-white h-2 rounded-full" style={{ width: `${volumePercent}%` }}></div>
                                     </div>
                                     <div className="text-xs text-gray-400 mt-2">
                                         Realtek Audio

@@ -10,6 +10,7 @@ import {
   FaLinkedin,
   FaMapPin,
   FaPhone,
+  FaRegDotCircle,
   FaTools,
   FaUser,
 } from "react-icons/fa";
@@ -102,7 +103,9 @@ const Resume = () => {
               FullStack Developer
             </h4>
             <div className="flex flex-wrap items-center gap-4 mb-3">
-              <span className="text-blue-400 font-medium">Toronto, Ontario</span>
+              <span className="text-blue-400 font-medium">
+                Toronto, Ontario
+              </span>
               <span className="bg-green-600 bg-opacity-20 text-green-400 px-2 py-1 rounded text-sm">
                 Remote (Contract)
               </span>
@@ -112,36 +115,56 @@ const Resume = () => {
               </div>
             </div>
             <ul className="text-gray-300 space-y-2 text-sm">
-              <li>
-                 Developed responsive and reusable UI components using React
-                and Material-UI, enhancing user interface consistency and
-                reducing development time.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Developed responsive and reusable UI components using React and
+                Material-UI, enhancing user interface consistency and reducing
+                development time.
+                </span>
               </li>
-              <li>
-                 Built a secure internal mailing and notification system with
-                NodeMailer, improving interdepartmental communication
-                efficiency by 40%.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Built a secure internal mailing and notification system with
+                NodeMailer, improving interdepartmental communication efficiency
+                by 40%.
+                </span>
               </li>
-              <li>
-                 Integrated external applications into file import and
-                parsing workflows, reducing manual data entry errors by 30%.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Integrated external applications into file import and parsing
+                workflows, reducing manual data entry errors by 30%.
+                </span>
               </li>
-              <li>
-                 Implemented persistent data storage using UUID-based document
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Implemented persistent data storage using UUID-based document
                 retrieval, boosting access reliability and speed by 45%.
+                </span>
               </li>
-              <li>
-                 Optimized SQL queries across CRUD operations, reducing query
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Optimized SQL queries across CRUD operations, reducing query
                 response times by 50% and improving application performance.
+                </span>
               </li>
-              <li>
-                 Collaborated with cross-functional teams in an Agile
-                environment to deploy new modules supporting over 5000
-                internal users.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Collaborated with cross-functional teams in an Agile environment
+                to deploy new modules supporting over 5000 internal users.
+                </span>
               </li>
-              <li>
-                 Utilized Git for version control, ensuring reliable code
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Utilized Git for version control, ensuring reliable code
                 traceability and reducing merge conflicts by 20%.
+                </span>
               </li>
             </ul>
           </div>
@@ -165,37 +188,55 @@ const Resume = () => {
               </div>
             </div>
             <ul className="text-gray-300 space-y-2 text-sm">
-              <li>
-                 Developed and deployed a mobile-first web application
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Developed and deployed a mobile-first web application
                 integrating the Google Maps API and Dijkstra's Algorithm to
                 optimize route generation, improving navigation accuracy and
                 performance for end users.
+                </span>
               </li>
-              <li>
-                Enhanced an e-commerce platform by maintaining product data,
-                updating inventory, and integrating Stripe API for secure
-                online payments, ensuring seamless checkout and PCI-compliant
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Enhanced an e-commerce platform by maintaining product data,
+                updating inventory, and integrating Stripe API for secure online
+                payments, ensuring seamless checkout and PCI-compliant
                 transactions.
+                </span>
               </li>
-              <li>
-                 Refactored and modernized legacy front-end architecture using
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Refactored and modernized legacy front-end architecture using
                 React.js and Styled Components, resulting in a 25% reduction in
                 code redundancy and improved UI scalability.
+                </span>
               </li>
-              <li>
-                 Implemented CI/CD practices with Git-based version control
-                and Agile sprint cycles, ensuring rapid delivery and consistent
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Implemented CI/CD practices with Git-based version control and
+                Agile sprint cycles, ensuring rapid delivery and consistent
                 version tracking across multiple environments
+                </span>
               </li>
-              <li>
-                 Collaborated with cross-functional teams to build RESTful
-                APIs and modular backend components with Node.js and Express,
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Collaborated with cross-functional teams to build RESTful APIs
+                and modular backend components with Node.js and Express,
                 improving system stability and integration speed.
+                </span>
               </li>
-              <li>
-                 Conducted code reviews, optimized API performance, and
-                resolved production issues to maintain 99.9% application uptime
-                and enhance user experience.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Conducted code reviews, optimized API performance, and resolved
+                production issues to maintain 99.9% application uptime and
+                enhance user experience.
+                </span>
               </li>
             </ul>
           </div>
@@ -219,30 +260,44 @@ const Resume = () => {
               </div>
             </div>
             <ul className="text-gray-300 space-y-2 text-sm">
-              <li>
-                 Developed a cross-platform property management web
-                application using React, Node.js, and MongoDB, improving
-                tenant-landlord communication and issue resolution time by 40%.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Developed a cross-platform property management web application
+                using React, Node.js, and MongoDB, improving tenant-landlord
+                communication and issue resolution time by 40%.
+                </span>
               </li>
-              <li>
-                 Implemented real-time bi-directional messaging with
-                Socket.io, enhancing user engagement and platform
-                responsiveness.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Implemented real-time bi-directional messaging with Socket.io,
+                enhancing user engagement and platform responsiveness.
+                </span>
               </li>
-              <li>
-                 Designed and deployed a document and payment dashboard using
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Designed and deployed a document and payment dashboard using
                 Express File Upload and MongoDB, streamlining document storage
                 and digital payment workflows.
+                </span>
               </li>
-              <li>
-                 Integrated Ethereum smart contracts (Solidity) and MetaMask
-                for secure, blockchain-based payment processing, ensuring
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Integrated Ethereum smart contracts (Solidity) and MetaMask for
+                secure, blockchain-based payment processing, ensuring
                 transparency and reducing third-party dependency.
+                </span>
               </li>
-              <li>
-                 Built scalable, responsive front-end interfaces with React
-                and Tailwind CSS, optimizing performance and reducing
-                development time by 30%.
+              <li className="flex items-start gap-2">
+                <FaRegDotCircle className="mt-1 text-emerald-300 text-xs flex-shrink-0" />
+                <span>
+                Built scalable, responsive front-end interfaces with React and
+                Tailwind CSS, optimizing performance and reducing development
+                time by 30%.
+                </span>
               </li>
             </ul>
           </div>
@@ -376,19 +431,16 @@ const Resume = () => {
                 Styling & UI
               </h4>
               <div className="flex flex-wrap gap-2">
-                {[
-                  "Tailwind CSS",
-                  "Bootstrap",
-                  "Chakra UI",
-                  "Material UI",
-                ].map((skill) => (
-                  <span
-                    key={skill}
-                    className="bg-indigo-700 bg-opacity-40 text-indigo-300 px-2 py-1 rounded text-xs border border-indigo-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {["Tailwind CSS", "Bootstrap", "Chakra UI", "Material UI"].map(
+                  (skill) => (
+                    <span
+                      key={skill}
+                      className="bg-indigo-700 bg-opacity-40 text-indigo-300 px-2 py-1 rounded text-xs border border-indigo-600"
+                    >
+                      {skill}
+                    </span>
+                  )
+                )}
               </div>
             </div>
             <div>

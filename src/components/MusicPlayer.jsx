@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { FaPause, FaPlay, FaStepBackward, FaStepForward } from "react-icons/fa";
 import playerIcon from "../assets/images/player.png";
 import moonlight from "../assets/images/Classicals.de-Beethoven-Moonlight-Sonata-1.-Movement-Sonata-Nr.-14,-Op.-27,-Nr.-2.mp3";
 import vivaldi from "../assets/images/Classicals.de - Vivaldi - Cello Sonata No. 5 in E minor - 4. Allegro - RV 40 (Telemann Trio).mp3";
@@ -13,7 +14,7 @@ const formatTime = (value) => {
   return `${minutes}:${seconds}`;
 };
 
-const MusicPlayer = () => {
+const MusicPlayer = ({ volume = 0.75 }) => {
   const tracks = useMemo(
     () => [
       {
@@ -83,6 +84,13 @@ const MusicPlayer = () => {
     audio.currentTime = nextTime;
     setProgress(nextTime);
   };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    const nextVolume = Math.min(Math.max(volume, 0), 1);
+    audio.volume = nextVolume;
+  }, [volume]);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -248,27 +256,31 @@ const MusicPlayer = () => {
                       <div className="flex items-center justify-center gap-3">
                         <button
                           type="button"
-                          className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20"
+                          className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"
                           onClick={handlePrev}
                           aria-label="Previous"
                         >
-                          ◀
+                          <FaStepBackward className="text-xs" />
                         </button>
                         <button
                           type="button"
-                          className="h-10 w-10 rounded-full bg-emerald-400 text-black font-semibold"
+                          className="h-10 w-10 rounded-full bg-emerald-400 text-black font-semibold flex items-center justify-center"
                           onClick={handlePlayPause}
                           aria-label={isPlaying ? "Pause" : "Play"}
                         >
-                          {isPlaying ? "❚❚" : "▶"}
+                          {isPlaying ? (
+                            <FaPause className="text-sm" />
+                          ) : (
+                            <FaPlay className="text-sm" />
+                          )}
                         </button>
                         <button
                           type="button"
-                          className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20"
+                          className="h-8 w-8 rounded-full bg-white/10 text-white hover:bg-white/20 flex items-center justify-center"
                           onClick={handleNext}
                           aria-label="Next"
                         >
-                          ▶
+                          <FaStepForward className="text-xs" />
                         </button>
                       </div>
                       <button

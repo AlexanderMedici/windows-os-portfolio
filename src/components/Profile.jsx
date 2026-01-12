@@ -214,9 +214,7 @@ const Profile = ({ currentTheme }) => {
             <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-3">
               <FaMobile className="text-white text-2xl" />
             </div>
-            <h4 className="font-semibold mb-2">
-              Cloud & API Infrastructure
-            </h4>
+            <h4 className="font-semibold mb-2">Cloud & API Infrastructure</h4>
             <p className="text-sm opacity-90">
               Ensuring perfect experiences across all devices and screen sizes
             </p>

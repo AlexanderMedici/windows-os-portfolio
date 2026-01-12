@@ -18,6 +18,11 @@ const App = () => {
   const [selectedTheme, setSelectedTheme] = useState(() => {
     return localStorage.getItem('selectedTheme') || 'blue'
   })
+  const [volume, setVolume] = useState(() => {
+    const stored = localStorage.getItem('playerVolume')
+    const parsed = stored ? Number(stored) : 0.75
+    return Number.isFinite(parsed) ? Math.min(Math.max(parsed, 0), 1) : 0.75
+  })
 
   // Save wallpaper preference
   useEffect(() => {
@@ -28,6 +33,11 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem('selectedTheme', selectedTheme)
   }, [selectedTheme])
+
+  // Save player volume preference
+  useEffect(() => {
+    localStorage.setItem('playerVolume', String(volume))
+  }, [volume])
 
   // Global right-click prevention
   useEffect(() => {
@@ -123,7 +133,7 @@ const App = () => {
         </div>
       )}
 
-      <Desktop onOpenWindow={openWindow} onChangeWallpaper={changeWallpaper} onChangeTheme={changeTheme} currentTheme={currentTheme} />
+      <Desktop onOpenWindow={openWindow} onChangeWallpaper={changeWallpaper} onChangeTheme={changeTheme} currentTheme={currentTheme} volume={volume} />
 
       {windows.map(window => (
         <WindowModal
@@ -142,6 +152,8 @@ const App = () => {
         activeWindow={activeWindow}
         onRestoreWindow={restoreWindow}
         onOpenWindow={openWindow}
+        volume={volume}
+        onVolumeChange={setVolume}
       />
     </div>
   )

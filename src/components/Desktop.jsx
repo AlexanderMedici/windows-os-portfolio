@@ -56,6 +56,7 @@ const Desktop = ({
   onOpenWindow,
   onChangeWallpaper,
   currentTheme,
+  volume,
 }) => {
   const desktopIcons = [
     {
@@ -661,7 +662,7 @@ const Desktop = ({
         type: "app",
         icon: playerIcon,
         keepAlive: true,
-        content: <MusicPlayer />,
+        content: <MusicPlayer volume={volume} />,
       },
     },
   ];

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
     FaBriefcase, FaLaptopCode, FaDatabase, FaExternalLinkAlt, FaGithub
 } from 'react-icons/fa';

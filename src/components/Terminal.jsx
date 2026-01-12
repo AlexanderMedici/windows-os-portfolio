@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaTerminal } from "react-icons/fa";
 
 const Terminal = () => {
@@ -44,7 +44,7 @@ const Terminal = () => {
         "",
         "Full-Stack  Developer passionate about building",
         "responsive, user-friendly web applications. Proficient in",
-        "React.js, JavaScript, and modern web technologies.",
+        "MongoDB,Express.js, React.js, NodeJs  JavaScript, and modern web technologies.",
         "Location: Toronto, Ontario, Canada",
         "Experience: 8+years",
         "",

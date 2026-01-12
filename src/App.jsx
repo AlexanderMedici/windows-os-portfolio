@@ -141,6 +141,7 @@ const App = () => {
         windows={windows}
         activeWindow={activeWindow}
         onRestoreWindow={restoreWindow}
+        onOpenWindow={openWindow}
       />
     </div>
   )

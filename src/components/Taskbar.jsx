@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa'
 import StartMenu from './StartMenu'
 
-const Taskbar = ({ windows, activeWindow, onRestoreWindow }) => {
+const Taskbar = ({ windows, activeWindow, onRestoreWindow, onOpenWindow }) => {
     const [currentTime, setCurrentTime] = useState(new Date())
     const [showBatteryTooltip, setShowBatteryTooltip] = useState(false)
     const [showWifiTooltip, setShowWifiTooltip] = useState(false)
@@ -58,6 +58,7 @@ const Taskbar = ({ windows, activeWindow, onRestoreWindow }) => {
             <StartMenu
                 isOpen={isStartMenuOpen}
                 onClose={() => setIsStartMenuOpen(false)}
+                onOpenWindow={onOpenWindow}
             />
             <div className="fixed bottom-0 left-0 right-0 h-12 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex items-center justify-between px-1 z-50 border-t border-gray-800">
                 {/* Left Side - Start Button and Search */}

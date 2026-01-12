@@ -29,8 +29,10 @@ import {
     SiMongodb,
     SiMysql
 } from 'react-icons/si'
+import chatIcon from '../assets/images/Chat.png'
+import OracleChat from './OracleChat'
 
-const StartMenu = ({ isOpen, onClose }) => {
+const StartMenu = ({ isOpen, onClose, onOpenWindow }) => {
     const [expandedFolders, setExpandedFolders] = useState({
         'UI/UX': false,
         'Frontend Development': true,
@@ -55,6 +57,17 @@ const StartMenu = ({ isOpen, onClose }) => {
             ...prev,
             [folderName]: !prev[folderName]
         }))
+    }
+
+    const handleOpenOracle = () => {
+        if (!onOpenWindow) return
+        onOpenWindow({
+            title: 'Oracle',
+            type: 'app',
+            icon: chatIcon,
+            content: <OracleChat />
+        })
+        onClose()
     }
 
     if (!isOpen) return null
@@ -326,6 +339,14 @@ const StartMenu = ({ isOpen, onClose }) => {
                                     <FaImages className="text-2xl text-blue-500 mb-1" />
                                     <span className="text-white text-xs text-center">Gallery</span>
                                 </div>
+                                <button
+                                    type="button"
+                                    onClick={handleOpenOracle}
+                                    className="col-span-1 bg-gray-600 bg-opacity-50 hover:bg-opacity-70 transition-all duration-200 flex flex-col items-center justify-center p-4 rounded h-20"
+                                >
+                                    <img src={chatIcon} alt="Oracle" className="w-7 h-7 mb-1" />
+                                    <span className="text-white text-xs text-center">Oracle</span>
+                                </button>
                             </div>
                         </div>
                     </>
@@ -342,6 +363,16 @@ const StartMenu = ({ isOpen, onClose }) => {
                                 <div className="w-4 h-0.5 bg-white"></div>
                             </div>
                             <span className="text-white text-base font-normal">My Skills</span>
+                        </div>
+                        <div className="px-4 pt-3">
+                            <button
+                                type="button"
+                                onClick={handleOpenOracle}
+                                className="w-full flex items-center gap-3 rounded-lg bg-gray-700 bg-opacity-50 px-4 py-3 text-white"
+                            >
+                                <img src={chatIcon} alt="Oracle" className="w-6 h-6" />
+                                <span className="text-sm">Oracle</span>
+                            </button>
                         </div>
 
                         {/* Skills List - Mobile Optimized */}

@@ -134,7 +134,7 @@ const MusicPlayer = () => {
         </header>
 
         <div className="flex flex-1 flex-col lg:flex-row min-h-0">
-          <aside className="lg:w-64 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0b1210]">
+          <aside className="lg:w-72 border-b lg:border-b-0 lg:border-r border-white/10 bg-[#0b1210]">
             <div className="px-4 py-4">
               <p className="text-xs uppercase tracking-wide text-white/40 mb-3">
                 Library
@@ -162,8 +162,8 @@ const MusicPlayer = () => {
           </aside>
 
           <main className="flex-1 overflow-y-auto">
-            <div className="mx-auto w-full max-w-3xl px-4 py-4 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-4">
+            <div className="mx-auto w-full max-w-5xl px-4 py-4 sm:px-6 lg:px-10">
+              <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6">
                 <div className="rounded-xl bg-[#12201a] border border-white/10 p-4">
                   <div className="aspect-square w-full rounded-lg bg-gradient-to-br from-emerald-500/40 via-emerald-600/20 to-slate-900/80 flex items-center justify-center">
                     <span className="text-4xl">🎵</span>

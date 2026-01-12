@@ -52,12 +52,7 @@ import Terminal from "./Terminal";
 // Wallpaper data
 import { wallpapers } from "../data/wallpapers";
 
-const Desktop = ({
-  onOpenWindow,
-  onChangeWallpaper,
-  currentTheme,
-  volume,
-}) => {
+const Desktop = ({ onOpenWindow, onChangeWallpaper, currentTheme, volume }) => {
   const desktopIcons = [
     {
       id: "this-pc",
@@ -343,7 +338,7 @@ const Desktop = ({
                         <div className="text-xs font-medium">
                           React DevTools
                         </div>
-                        <div className="text-xs opacity-80">v4.28.0</div>
+                        <div className="text-xs opacity-80">v7.0.1</div>
                       </div>
                     </div>
 

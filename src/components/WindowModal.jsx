@@ -18,6 +18,7 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
   const [previousPosition, setPreviousPosition] = useState(getInitialPosition())
   const [isMobileOrTablet, setIsMobileOrTablet] = useState(false)
   const [hasEverBeenDragged, setHasEverBeenDragged] = useState(false)
+  const hasUserToggledMax = useRef(false)
   const windowRef = useRef(null)
 
   useEffect(() => {
@@ -27,8 +28,8 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
       const isSmallScreen = window.innerWidth < 1024 // lg breakpoint in Tailwind
       setIsMobileOrTablet(isTouchDevice || isSmallScreen)
 
-      // Auto-maximize on mobile for better UX
-      if (isTouchDevice || isSmallScreen) {
+      // Auto-maximize on mobile for better UX (unless user already toggled)
+      if ((isTouchDevice || isSmallScreen) && !hasUserToggledMax.current) {
         setIsMaximized(true)
       }
     }
@@ -62,6 +63,7 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
   }
 
   const handleMaximize = () => {
+    hasUserToggledMax.current = true
     if (isMaximized) {
       // Restore to previous size and position
       setIsMaximized(false)
@@ -72,6 +74,7 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
       setIsMaximized(true)
       setPosition({ x: 0, y: 0 })
     }
+    onMaximize?.()
   }
 
   const handleDoubleClickTitleBar = (e) => {
@@ -135,16 +138,8 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
 
   // Responsive window styling
   const getWindowClasses = () => {
-    if (isMobileOrTablet) {
-      return `
-        fixed inset-0 bg-white
-        ${isActive ? 'z-50' : 'z-40'}
-        flex flex-col
-      `
-    }
-
     return `
-      fixed bg-gray-800 bg-opacity-90 shadow-2xl border border-gray-600
+      fixed bg-gray-800 bg-opacity-90 shadow-2xl border border-gray-600 flex flex-col
       ${isActive ? 'z-50' : 'z-40'}
       ${isDragging ? 'cursor-grabbing' : 'cursor-default'}
       ${isMaximized ? 'rounded-none' : 'rounded-lg'}
@@ -154,11 +149,22 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
 
   const getWindowStyle = () => {
     if (isMobileOrTablet) {
+      if (isMaximized) {
+        return {
+          left: '0px',
+          top: '0px',
+          width: '100vw',
+          height: 'calc(100vh - 48px)', // Account for taskbar height (48px)
+          borderRadius: '0px'
+        }
+      }
+
       return {
-        left: '0px',
-        top: '0px',
-        width: '100vw',
-        height: 'calc(100vh - 48px)', // Account for taskbar height (48px)
+        left: '4vw',
+        top: '6vh',
+        width: '92vw',
+        height: '80vh',
+        borderRadius: '12px'
       }
     }
 
@@ -221,36 +227,32 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
         </div>
 
         <div className="flex items-center window-controls">
-          {/* Minimize Button - Hide on mobile */}
-          {!isMobileOrTablet && (
-            <button
-              onClick={onMinimize}
-              className="w-11 h-10 cursor-pointer hover:bg-gray-600 hover:bg-opacity-80 flex items-center justify-center transition-colors"
-              title="Minimize"
-            >
-              <div className={`w-3 h-0.5 ${isActive ? 'bg-white' : 'bg-gray-200'}`}></div>
-            </button>
-          )}
+          {/* Minimize Button */}
+          <button
+            onClick={onMinimize}
+            className={`${isMobileOrTablet ? 'w-12 h-14' : 'w-11 h-10'} cursor-pointer hover:bg-gray-600 hover:bg-opacity-80 flex items-center justify-center transition-colors`}
+            title="Minimize"
+          >
+            <div className={`w-3 h-0.5 ${isActive ? 'bg-white' : 'bg-gray-200'}`}></div>
+          </button>
 
-          {/* Maximize/Restore Button - Hide on mobile */}
-          {!isMobileOrTablet && (
-            <button
-              onClick={handleMaximize}
-              className="w-11 h-10 cursor-pointer hover:bg-gray-600 hover:bg-opacity-80 flex items-center justify-center transition-colors"
-              title={isMaximized ? "Restore Down" : "Maximize"}
-            >
-              {isMaximized ? (
-                // Restore icon (two overlapping squares)
-                <div className="relative">
-                  <div className={`w-2.5 h-2.5 border ${isActive ? 'border-white' : 'border-gray-200'} absolute -top-0.5 -left-0.5`}></div>
-                  <div className={`w-2.5 h-2.5 border ${isActive ? 'border-white' : 'border-gray-200'} bg-transparent`}></div>
-                </div>
-              ) : (
-                // Maximize icon (single square)
-                <div className={`w-3 h-3 border ${isActive ? 'border-white' : 'border-gray-200'}`}></div>
-              )}
-            </button>
-          )}
+          {/* Maximize/Restore Button */}
+          <button
+            onClick={handleMaximize}
+            className={`${isMobileOrTablet ? 'w-12 h-14' : 'w-11 h-10'} cursor-pointer hover:bg-gray-600 hover:bg-opacity-80 flex items-center justify-center transition-colors`}
+            title={isMaximized ? "Restore Down" : "Maximize"}
+          >
+            {isMaximized ? (
+              // Restore icon (two overlapping squares)
+              <div className="relative">
+                <div className={`w-2.5 h-2.5 border ${isActive ? 'border-white' : 'border-gray-200'} absolute -top-0.5 -left-0.5`}></div>
+                <div className={`w-2.5 h-2.5 border ${isActive ? 'border-white' : 'border-gray-200'} bg-transparent`}></div>
+              </div>
+            ) : (
+              // Maximize icon (single square)
+              <div className={`w-3 h-3 border ${isActive ? 'border-white' : 'border-gray-200'}`}></div>
+            )}
+          </button>
 
           {/* Close Button */}
           <button
@@ -275,12 +277,12 @@ const WindowModal = ({ window: windowData, isActive, onClose, onMinimize, onMaxi
         `}
         style={{
           height: isMobileOrTablet
-            ? 'calc(100vh - 56px)' // Full height minus title bar on mobile
+            ? 'calc(100% - 56px)'
             : isMaximized
               ? 'calc(100vh - 96px)'
               : 'calc(70vh + 100px - 50px)', // Content area: 70% viewport height + 100px minus title bar
           maxHeight: isMobileOrTablet
-            ? 'calc(100vh - 56px)'
+            ? 'calc(100% - 56px)'
             : isMaximized
               ? 'calc(100vh - 96px)'
               : 'calc(70vh + 100px - 50px)'

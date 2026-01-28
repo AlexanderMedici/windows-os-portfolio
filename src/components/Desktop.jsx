@@ -73,7 +73,7 @@ const Desktop = ({ onOpenWindow, onChangeWallpaper, currentTheme, volume }) => {
                   Portfolio System Overview
                 </h3>
                 <p className="text-gray-400 text-sm lg:text-base">
-                  Developer Workstation • Portfolio Edition 2026
+                  Developer Workstation - Portfolio Edition 2026
                 </p>
               </div>
             </div>
@@ -348,7 +348,7 @@ const Desktop = ({ onOpenWindow, onChangeWallpaper, currentTheme, volume }) => {
                       </div>
                       <div>
                         <div className="text-xs font-medium">Node.js</div>
-                        <div className="text-xs opacity-80">v18.17.0</div>
+                        <div className="text-xs opacity-80">v22.20.0</div>
                       </div>
                     </div>
 
@@ -392,7 +392,7 @@ const Desktop = ({ onOpenWindow, onChangeWallpaper, currentTheme, volume }) => {
                         <div className="text-xs text-gray-400">2 hours ago</div>
                       </div>
                     </div>
-                    <div className="text-xs text-gray-300">✓ Deployed</div>
+                    <div className="text-xs text-gray-300">Deployed</div>
                   </div>
 
                   <div className="flex items-center justify-between p-3 bg-gray-600 bg-opacity-30 rounded-lg">
@@ -592,9 +592,9 @@ const Desktop = ({ onOpenWindow, onChangeWallpaper, currentTheme, volume }) => {
                       Personalization Tips
                     </h5>
                     <ul className="text-sm text-gray-300 space-y-1">
-                      <li>• Your preferences are automatically saved</li>
-                      <li>• Try different wallpapers to match your mood</li>
-                      <li>• Changes apply instantly across the portfolio</li>
+                      <li>Your preferences are automatically saved</li>
+                      <li>Try different wallpapers to match your mood</li>
+                      <li>Changes apply instantly across the portfolio</li>
                     </ul>
                   </div>
                 </div>

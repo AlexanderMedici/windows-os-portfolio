@@ -26,7 +26,7 @@ const Resume = () => {
             <h1 className="text-2xl lg:text-3xl font-bold mb-2">
               Alexander Medici
             </h1>
-            <p className="text-blue-100 text-lg mb-3">FullStack Developer</p>
+            <p className="text-blue-100 text-lg mb-3">Full-Stack Developer</p>
             <div className="flex flex-wrap gap-4 text-sm">
               <div className="flex items-center">
                 <FaMapPin className="mr-2" />
@@ -100,7 +100,7 @@ const Resume = () => {
           <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-400 rounded-full"></div>
           <div className="mb-6">
             <h4 className="text-lg font-semibold text-white mb-2">
-              FullStack Developer
+              Full-Stack Developer
             </h4>
             <div className="flex flex-wrap items-center gap-4 mb-3">
               <span className="text-blue-400 font-medium">
@@ -174,7 +174,7 @@ const Resume = () => {
           <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-400 rounded-full"></div>
           <div className="mb-6">
             <h4 className="text-lg font-semibold text-white mb-2">
-              FullStack Developer
+              Full-Stack Developer
             </h4>
             <div className="flex flex-wrap items-center gap-4 mb-3">
               <span className="text-blue-400 font-medium">
@@ -246,7 +246,7 @@ const Resume = () => {
           <div className="absolute -left-2 top-0 w-4 h-4 bg-gray-400 rounded-full"></div>
           <div className="mb-6">
             <h4 className="text-lg font-semibold text-white mb-2">
-              FullStack Developer
+              Full-Stack Developer
             </h4>
             <div className="flex flex-wrap items-center gap-4 mb-3">
               <span className="text-blue-400 font-medium">
@@ -387,7 +387,7 @@ const Resume = () => {
             </div>
             <div>
               <h4 className="font-semibold text-white">
-                Post Graduate Program in Full Stack Web Development(PGP)
+                Post Graduate Program in Full Stack Web Development (PGP)
               </h4>
               <p className="text-blue-400 text-sm">
                 California Institute of Technology
